@@ -12,33 +12,22 @@
     <button type="button" onclick="input_Text()">미리보기</button>
     <br>
 
-  <select>
-    <option name="Color" value="black" selected>검정</option>
-    <option name="Color" value="red">빨강</option>
-    <option name="Color" value="green">초록</option>
-    <option name="Color" value="blue">파랑</option>
+  <select id="Color">
+    <option value="black" selected>검정</option>
+    <option value="red">빨강</option>
+    <option value="green">초록</option>
+    <option value="blue">파랑</option>
   </select>
   <br> 크기:
-  <select>
-    <option name="Size" value="1" selected>1</option>
-    <option name="Size" value="2">2</option>
-    <option name="Size" value="3">3</option>
-    <option name="Size" value="4">4</option>
+  <select id="Size">
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
   </select>
 
   <br>
-  <script>
-   var ftcol=[
-       {name:"black", text:"검정", func: function(a){ return "<span style=\"font-color:black;\">"+a+"</span>"}}
-       ,  {name:"red", text:"빨강", func: function(a){ return "<span style=\"font-color:red;\">"+a+"</span>"}}
-       ,  {name:"green", text:"초록", func: function(a){ return "<span style=\"font-color:green;\">"+a+"</span>"}}
-       ,  {name:"blue", text:"파랑", func: function(a){ return "<span style=\"font-color:blue;\">"+a+"</span>"}}
-       ,  {name:"5", text:"1", func: function(a){ return "<span style=\"font-size:5px;\">"+a+"</span>"}}
-       ,  {name:"10", text:"2", func: function(a){ return "<span style=\"font-size:10px;\">"+a+"</span>"}}
-       ,  {name:"15", text:"3", func: function(a){ return "<span style=\"font-size:15px;\">"+a+"</span>"}}
-       ,  {name:"20", text:"4", func: function(a){ return "<span style=\"font-size:20px;\">"+a+"</span>"}}
-   ]
-  </script>
+
   <script>
    // 거의 반복적인 정보를 적을 뿐이므로, 자료 구조로 제작하여 효율을 꾀한다.
    // 이러한 방법을 "추상화"라고 한다.
@@ -117,8 +106,8 @@
    function input_Text() {
        var elm1 = document.getElementById("user_input").value;
 
-       var col = document.getElementsByName("Color");
-       var siz = document.getElementsByName("Size");
+       var col = document.getElementsById("Color").value;
+       var siz = document.getElementsById("Size").value;
 
        var ret = elm1.value.fontcolor(col).fontsize(size); // 변하는 값!
 
