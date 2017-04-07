@@ -109,7 +109,7 @@
        var col = document.getElementById("Color").value;
        var siz = document.getElementById("Size").value;
 
-       var ret = elm1.value.fontcolor(col).fontsize(size); // 변하는 값!
+       var ret = elm1.fontcolor(col).fontsize(siz); // 변하는 값!
 
        for(var i in filters) {
            if(is_checked(filters[i].name)) {
