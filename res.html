@@ -11,7 +11,7 @@
     <input type="text" id="user_input">
     <button type="button" onclick="input_Text()">미리보기</button>
     <br>
-
+    색깔: 
   <select id="Color">
     <option value="black" selected>검정</option>
     <option value="red">빨강</option>
@@ -106,8 +106,8 @@
    function input_Text() {
        var elm1 = document.getElementById("user_input").value;
 
-       var col = document.getElementsById("Color").value;
-       var siz = document.getElementsById("Size").value;
+       var col = document.getElementById("Color").value;
+       var siz = document.getElementById("Size").value;
 
        var ret = elm1.value.fontcolor(col).fontsize(size); // 변하는 값!
 
