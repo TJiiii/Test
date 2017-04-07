@@ -120,7 +120,8 @@
        var col = document.getElementsByName("Color");
        var siz = document.getElementsByName("Size");
 
-       var ret = elm1; // 변하는 값!
+       var ret = elm1.value.fontcolor(col).fontsize(size); // 변하는 값!
+
        for(var i in filters) {
            if(is_checked(filters[i].name)) {
                ret = filters[i].func(ret); // 필터 적용.
