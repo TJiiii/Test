@@ -22,18 +22,42 @@
         일단 값을 제대로 받아왔는지도 모르겠다 이렇게 하면 된건가 아닌건가..
         */
 
-        //각 텍스트를 확인할 정규표현식등,
-        var id_p = /[\w]{4}/gi;
-        var pw_p = /[\w]{4}/gi;
-        var pw_re_p = /[\w]{4}/gi;
-        var mail_p;
-        var socialnum_p;
+        //각 텍스트를 확인할 정규표현식등, 아이디와 패스워드는 문제없을거라 예상
+        var id_p = /[\w]{4,}/gi;
+        var pw_p = /[\w]{4,}/gi;
+        //제대로 쓴진 모르겠지만 아마 메일도 문제없을듯
+        var mail_p = /[\w]@[A-Za-z]\.[A-Za-z]/;
+        //주민번호 확인 알고리즘을 적용하지 않음, 일단 숫자 6자리와 - 를 포함한 7자리 숫자만 받도록
+        var socialnum_p /[\d]{6}-[\d]{7}/;
 
 
         //확인을 했지만 그냥 무조건 true , id 가 그냥 object 라서 그런건가?
         if(id_p.test(id)){
+          //id 확인식, 제대로 작동은 안하지만
+          //필요한 기능은 id 가 조건에 맞지않을 경우 오류창 띄우고 리턴.
           alert("test");
+          return false;
         }
+        if(pw_p.test(pw)){
+          //패스워드 확인식, 마찬가지로 확인 이상점검
+          return false;
+          if(pw_p.test(pw_re)){
+            //패스워드 재입력 확인, 패스워드와 일치하는가도 점검.
+            return false;
+          }
+        }
+        if(mail_p.test(mail)){
+          //메일점검
+          return false;
+        }
+        if(socialnum_p.test(socialnum)){
+          //주민번호 점검
+          return false;
+        }
+
+        //모든 조건문을 뚫고 오면 회원가입 완료 끝
+        alert("회원가입 되었습니다.");
+
       }
     </script>
 </head>
