@@ -4,12 +4,25 @@
 <head>
       <meta charset="utf-8">
     <title>회원 가입 페이지</title>
+    <script type="text/javascript">
+      function result() {
+        var id = document.getElementsByName("id").value;
+        var pw = document.getElementsByName("pw");
+        var pw_re = document.getElementsByName("pw_re");
+        var mail = document.getElementsByName("mail");
+        var socialnum = document.getElementsByName("socialnum");
+
+        var ip_p = /[\w]{4}/g;
+
+        if(id_p.test(id)){
+          alert("test");
+        }
+      }
+    </script>
 </head>
-<body leftmargin="50">
-<embed src="Track06.wav" autostart="true/false" loop="true/false" width="280" height="45" hidden="true/false">
 
   <center>
-<form action="mailto:hpmmomiji@gmail.com" method="get">
+<form method="get">
 <table width="700" height="400" border="1" cellspacing="0" >
   <tr bgcolor=#0080ff>
     <td colspan="3" align="center">회원 기본 정보</td>
@@ -110,7 +123,7 @@
 
 </table>
 <p>
-<input type="submit" value="회원 가입">
+<input type="button" onclick="result()" value="회원 가입">
 <input type="reset" value="다시 입력">
 </p>
 </form>
