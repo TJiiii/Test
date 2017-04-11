@@ -7,12 +7,14 @@
     <script type="text/javascript">
       function result() {
         var id = document.getElementsByName("id").value;
-        var pw = document.getElementsByName("pw");
+        var pw = document.getElementsByName("pw").value;
         var pw_re = document.getElementsByName("pw_re");
         var mail = document.getElementsByName("mail");
         var socialnum = document.getElementsByName("socialnum");
 
-        var ip_p = /[\w]{4}/g;
+        var id_p = /[\w]{4}/gi;
+
+        alert(id_p.test(id));
 
         if(id_p.test(id)){
           alert("test");
