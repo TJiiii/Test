@@ -12,11 +12,11 @@
         메일은 영숫자@영숫자@영어3
         주민번호는 readme 의 주민번호 공식처럼.
         */
-        var id = document.getElementsByName("id").value;
-        var pw = document.getElementsByName("pw").value;
-        var pw_re = document.getElementsByName("pw_re").value;
-        var mail = document.getElementsByName("mail").value;
-        var socialnum = document.getElementsByName("socialnum").value;
+        var id = document.getElementById("id");
+        var pw = document.getElementById("pw");
+        var pw_re = document.getElementById("pw_re");
+        var mail = document.getElementById("mail");
+        var socialnum = document.getElementById("socialnum");
 
         /*
         일단 값을 제대로 받아왔는지도 모르겠다 이렇게 하면 된건가 아닌건가..
@@ -26,33 +26,40 @@
         var id_p = /[\w]{4,}/gi;
         var pw_p = /[\w]{4,}/gi;
         //제대로 쓴진 모르겠지만 아마 메일도 문제없을듯
-        var mail_p = /[\w]@[A-Za-z]\.[A-Za-z]/;
+        var mail_p = /[\w]\@[A-Za-z]\.[A-Za-z]/;
         //주민번호 확인 알고리즘을 적용하지 않음, 일단 숫자 6자리와 - 를 포함한 7자리 숫자만 받도록
         var socialnum_p = /[\d]{6}-[\d]{7}/;
 
-
         //확인을 했지만 그냥 무조건 true , id 가 그냥 object 라서 그런건가?
-        if(id_p.test(id)){
+        if(!(id_p.test(id.value))){
           //id 확인식, 제대로 작동은 안하지만
           //필요한 기능은 id 가 조건에 맞지않을 경우 오류창 띄우고 리턴.
-          alert("test id");
+          alert("id 는 영숫자 4자리 이상 입력해주세요");
           return false;
         }
-        if(pw_p.test(pw)){
+        if(!(pw_p.test(pw.value))){
           //패스워드 확인식, 마찬가지로 확인 이상점검
-          alert("test pw");
+          alert("pw 는 영숫자 4자리 이상 입력해주세요");
           return false;
-          if(pw_p.test(pw_re)){
-            //패스워드 재입력 확인, 패스워드와 일치하는가도 점검.
+          if(pw_p.test(pw_re.value)){
+            //패스워드 재입력 확인
+            alert("pw 는 영숫자 4자리 이상 입력해주세요");
             return false;
           }
         }
-        if(mail_p.test(mail)){
-          //메일점검
+        if(pw.value != pw_re.value){
+          alert("패스워드가 일치하지 않습니다.");
           return false;
         }
-        if(socialnum_p.test(socialnum)){
+
+        if(!(mail_p.test(mail.value))){
+          //메일점검
+          alert("이메일을 잘못 입력했습니다");
+          return false;
+        }
+        if(!(socialnum_p.test(socialnum.value))){
           //주민번호 점검
+          alert("주민번호를 잘못 입력했습니다");
           return false;
         }
 
@@ -71,30 +78,30 @@
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>아이디 : </td>
-    <td colspan="2"><input type="text" name="id" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+    <td colspan="2"><input type="text" id="id" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>비밀번호 : </td>
-    <td colspan="2"><input type="text" name="pw" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+    <td colspan="2"><input type="text" id="pw" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>비밀번호확인 : </td>
-    <td colspan="2"><input type="text" name="pw_re" size="12" maxlength="12"></td>
+    <td colspan="2"><input type="text" id="pw_re" size="12" maxlength="12"></td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>메일주소 : </td>
-    <td colspan="2"><input type="text" name="mail" size="20" maxlength="20"> 예)id@domain.com</td>
+    <td colspan="2"><input type="text" id="mail" size="20" maxlength="20"> 예)id@domain.com</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>이름 : </td>
-    <td colspan="2"><input type="text" name="name" size="20" maxlength="20"></td>
+    <td colspan="2"><input type="text" id="name" size="20" maxlength="20"></td>
   </tr>
   <tr bgcolor=#0080ff>
     <td colspan="3" align="center">개인 신상 정보</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>주민등록번호 : </td>
-    <td colspan="2"><input type="text" name="socialnum" size="20" maxlength="20"> 예) 123456789345</td>
+    <td colspan="2"><input type="text" id="socialnum" size="20" maxlength="20"> 예) 123456789345</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>생일 : </td>
