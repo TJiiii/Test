@@ -26,42 +26,65 @@
         var id_p = /[\w]{4,}/gi;
         var pw_p = /[\w]{4,}/gi;
         //제대로 쓴진 모르겠지만 아마 메일도 문제없을듯
-        var mail_p = /[\w]\@[A-Za-z]\.[A-Za-z]/;
+        var mail_p =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         //주민번호 확인 알고리즘을 적용하지 않음, 일단 숫자 6자리와 - 를 포함한 7자리 숫자만 받도록
-        var socialnum_p = /[\d]{6}-[\d]{7}/;
+        var socialnum_p = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-4][0-9]{6}$/;
 
         //확인을 했지만 그냥 무조건 true , id 가 그냥 object 라서 그런건가?
         if(!(id_p.test(id.value))){
           //id 확인식, 제대로 작동은 안하지만
           //필요한 기능은 id 가 조건에 맞지않을 경우 오류창 띄우고 리턴.
           alert("id 는 영숫자 4자리 이상 입력해주세요");
+          document.getElementById("id").value = "";
+          return false;
+        }
+        if(id.value == pw.value){
+          alert("id 와 pw 가 일치합니다. 다시입력해주세요");
+          document.getElementById("pw").value = "";
+          document.getElementById("pw_p").value = "";
           return false;
         }
         if(!(pw_p.test(pw.value))){
           //패스워드 확인식, 마찬가지로 확인 이상점검
           alert("pw 는 영숫자 4자리 이상 입력해주세요");
-          return false;
+          document.getElementById("pw").value = "";
           if(pw_p.test(pw_re.value)){
             //패스워드 재입력 확인
-            alert("pw 는 영숫자 4자리 이상 입력해주세요");
+            alert("pw 확인은 영숫자 4자리 이상 입력해주세요");
+            document.getElementById("pw_p").value = "";
             return false;
           }
+          return false;
         }
         if(pw.value != pw_re.value){
           alert("패스워드가 일치하지 않습니다.");
+          document.getElementById("pw").value = "";
+          document.getElementById("pw_p").value = "";
           return false;
         }
 
         if(!(mail_p.test(mail.value))){
           //메일점검
           alert("이메일을 잘못 입력했습니다");
+          document.getElementById("mail").value = "";
           return false;
         }
+        if(document.getElementById("name").value == ""){
+          alert("이름을 입력해주세요");
+          return false;
+        }
+
         if(!(socialnum_p.test(socialnum.value))){
           //주민번호 점검
           alert("주민번호를 잘못 입력했습니다");
+          document.getElementById("socialnum").value = "";
           return false;
         }
+        /*
+        if(document.getElementById("birth_year").value == null){
+          alert("");
+          return false;
+        }*/
 
         //모든 조건문을 뚫고 오면 회원가입 완료 끝
         alert("회원가입 되었습니다.");
@@ -82,11 +105,11 @@
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>비밀번호 : </td>
-    <td colspan="2"><input type="text" id="pw" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+    <td colspan="2"><input type="password" id="pw" size="12" maxlength="12"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>비밀번호확인 : </td>
-    <td colspan="2"><input type="text" id="pw_re" size="12" maxlength="12"></td>
+    <td colspan="2"><input type="password" id="pw_re" size="12" maxlength="12"></td>
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>메일주소 : </td>
@@ -105,7 +128,7 @@
   </tr>
   <tr>
     <td align="center" bgcolor=#aaaaaa>생일 : </td>
-    <td colspan="2"><input type="text" name="birth_year" size="4" maxlength="4">년
+    <td colspan="2"><input type="text" id="birth_year" size="4" maxlength="4">년
       <select name="month">
         <option value="1" selected>1</option>
         <option value="2">2</option>
