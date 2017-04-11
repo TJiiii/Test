@@ -8,13 +8,16 @@
       function result() {
         var id = document.getElementsByName("id").value;
         var pw = document.getElementsByName("pw").value;
-        var pw_re = document.getElementsByName("pw_re");
-        var mail = document.getElementsByName("mail");
-        var socialnum = document.getElementsByName("socialnum");
+        var pw_re = document.getElementsByName("pw_re").value;
+        var mail = document.getElementsByName("mail").value;
+        var socialnum = document.getElementsByName("socialnum").value;
 
         var id_p = /[\w]{4}/gi;
-
-        alert(id_p.test(id));
+        var pw_p;
+        var pw_re_p;
+        var mail_p;
+        var socialnum_p;
+        alert(id);
 
         if(id_p.test(id)){
           alert("test");
