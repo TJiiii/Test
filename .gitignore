@@ -19,6 +19,9 @@ blobs/
 *.jpg
 *.gif
 
+# 파이썬의 캐시 폴더는 무시
+__pycache__/
+
 
 
 # pycharm ide
