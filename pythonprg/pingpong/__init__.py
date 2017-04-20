@@ -6,7 +6,7 @@ import table, ball, bat
 from pygame import mixer # Load the required library
 
 mixer.init()
-mixer.music.load("a.wav")
+mixer.music.load('pingpong/a.wav')
 
 
 # 전역 변수 초기화
@@ -29,8 +29,8 @@ my_ball = ball.Ball(table=my_table, x_speed=x_velocity, y_speed=y_velocity,
                     width=24, height=24, colour="red", x_start=288, y_start=188)
 
 # Bat 클래스으로부터 배트를 호출합니다
-bat_L = bat.Bat(table=my_table, width=15, height=100, x_posn=20, y_posn=150, colour="red")
-bat_R = bat.Bat(table=my_table, width=15, height=100, x_posn=575, y_posn=150, colour="red")
+bat_L = bat.Bat(table=my_table, width=15, height=100, x_posn=30, y_posn=150, colour="green")
+bat_R = bat.Bat(table=my_table, width=15, height=100, x_posn=565, y_posn=150, colour="green")
 
 def on_close():
     mixer.music.stop()
@@ -54,13 +54,13 @@ def game_flow():
     bat_R.detect_collision(my_ball)
 
     # 왼쪽 벽에서 공이 부딪치는지 감지:
-    if(my_ball.x_posn <= 3):
+    if(my_ball.x_posn <= -3):
         my_ball.stop_ball()
         my_ball.start_position()
         bat_L.start_position()
         bat_R.start_position()
-        my_table.move_item(bat_L.rectangle, 20, 150, 35, 250)
-        my_table.move_item(bat_R.rectangle, 575, 150, 590, 250)
+        my_table.move_item(bat_L.rectangle, 30, 150, 45, 250)
+        my_table.move_item(bat_R.rectangle, 565, 150, 580, 250)
         score_left = score_left + 1
         if(score_left >= 10):
             score_left = "W"
@@ -69,13 +69,13 @@ def game_flow():
         my_table.draw_score(score_left, score_right)
 
     # 오른쪽 벽에서 공이 부딪치는지 감지:
-    if(my_ball.x_posn + my_ball.width >= my_table.width - 3):
+    if(my_ball.x_posn + my_ball.width >= my_table.width +3):
         my_ball.stop_ball()
         my_ball.start_position()
         bat_L.start_position()
         bat_R.start_position()
-        my_table.move_item(bat_L.rectangle, 20, 150, 35, 250)
-        my_table.move_item(bat_R.rectangle, 575, 150, 590, 250)
+        my_table.move_item(bat_L.rectangle, 30, 150, 45, 250)
+        my_table.move_item(bat_R.rectangle, 565, 150, 580, 250)
         score_right = score_right + 1
         if(score_right >= 10):
             score_right = "W"
