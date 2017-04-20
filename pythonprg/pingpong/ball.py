@@ -16,6 +16,7 @@ class Ball:
         self.y_start = y_start
         self.x_speed = x_speed
         self.y_speed = y_speed
+
         self.table = table
         self.circle = self.table.draw_oval(self)       
     
@@ -33,12 +34,12 @@ class Ball:
         self.x_posn = self.x_posn + self.x_speed
         self.y_posn = self.y_posn + self.y_speed
         # 공이 왼쪽 벽에 부딪쳤을 때:
-        if(self.x_posn <= -3):
-            self.x_posn = -3
+        if(self.x_posn <= 3):
+            self.x_posn = 3
             self.x_speed = -self.x_speed
         # 공이 오른쪽 벽에 부딪쳤을 때:
-        if(self.x_posn >= (self.table.width - (self.width + 3))):
-            self.x_posn = (self.table.width - (self.width + 3))
+        if(self.x_posn >= (self.table.width - (self.width - 3))):
+            self.x_posn = (self.table.width - (self.width - 3))
             self.x_speed = -self.x_speed
         # 공이 위쪽 벽에 부딪쳤을 때:
         if(self.y_posn <= 3):
@@ -49,8 +50,10 @@ class Ball:
             self.y_posn = (self.table.height - (self.height - 3))
             self.y_speed = -self.y_speed
         # 마지막으로 원의 이동:
-        self.x_speed *= 1.004
-        self.y_speed *= 1.004
+        if((self.x_speed * self.x_speed) < 600):
+            self.x_speed *= 1.003
+            self.y_speed *= 1.003
+
         x1 = self.x_posn
         x2 = self.x_posn+self.width
         y1 = self.y_posn
