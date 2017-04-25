@@ -50,10 +50,6 @@ class Ball:
             self.y_posn = (self.table.height - (self.height - 3))
             self.y_speed = -self.y_speed
         # 마지막으로 원의 이동:
-        if((self.x_speed * self.x_speed) < 600):
-            self.x_speed *= 1.003
-            self.y_speed *= 1.003
-
         x1 = self.x_posn
         x2 = self.x_posn+self.width
         y1 = self.y_posn

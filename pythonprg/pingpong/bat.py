@@ -72,6 +72,14 @@ class Bat:
                 adjustment = (-(h_centre - h_centre_b))/(self.width/2)
                 ball.x_speed = feel * adjustment
 
+            if ((ball.x_speed * ball.x_speed) < 600):
+                if (ball.x_speed > 0):
+                    ball.x_speed += 3
+                    ball.y_speed += 3
+                elif (ball.x_speed < 0):
+                    ball.x_speed -= 3
+                    ball.y_speed -= 3
+
             return (collision, collision_direction)
 
     def move_up(self, master):
