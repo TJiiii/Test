@@ -9,7 +9,7 @@ import time
 
 mixer.init()
 
-mixer.music.load('turtle_game/01.wav')
+mixer.music.load('01.wav')
 #mixer.music.play(-1,0.0)
 
 

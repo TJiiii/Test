@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 
 class App:
     def __init__(self, Parent):
@@ -32,18 +33,13 @@ class App:
 
 
     def button1Click(self, event):
-        import turtle_game
+        os.system("cd turtle_game; python .")
     def button2Click(self, event):
-        sys.path.append("./brickbreak")
-        import brickbreak
+        os.system("cd brickbreak; python .")
     def button3Click(self, event):
-        sys.path.append("./pingpong")
-        import pingpong
+        os.system("cd pingpong; python .")
     def button4Click(self, event):
-        sys.path.append("./marioworld")
-        import marioworld
-
-
+        os.system("cd marioworld; python .")
 
 root=Tk()
 App = App(root)

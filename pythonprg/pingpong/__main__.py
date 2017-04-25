@@ -6,7 +6,7 @@ import table, ball, bat
 from pygame import mixer # Load the required library
 
 mixer.init()
-mixer.music.load('pingpong/a.wav')
+mixer.music.load('a.wav')
 
 
 # 전역 변수 초기화

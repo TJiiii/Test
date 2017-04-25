@@ -6,14 +6,14 @@ from tkinter import *
 from pygame import mixer
 
 mixer.init()
-mixer.music.load('brickbreak/eichenwalde.wav')
+mixer.music.load('eichenwalde.wav')
 
 window = Tk(mixer.music.play(-1,0.0))
 window.title("아이헨발데로 떠납니다")
 my_table = table.Table(window)
 
 #배경화면 불러오기
-starry_night_image = PhotoImage(file = "brickbreak/eichen.gif")
+starry_night_image = PhotoImage(file = "eichen.gif")
 my_table.canvas.create_image(0, 0, anchor=NW, image = starry_night_image, tags="bg_img")
 my_table.canvas.lower("bg_img")
 
