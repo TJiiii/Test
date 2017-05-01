@@ -18,6 +18,7 @@ blobs/
 *.png
 *.jpg
 *.gif
+*.mp3
 
 # 파이썬의 캐시 폴더는 무시
 __pycache__/

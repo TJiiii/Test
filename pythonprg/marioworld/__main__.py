@@ -1,6 +1,6 @@
-from tkinter import *
-import random
 import time
+from tkinter import *
+from pygame import mixer
 
 
 class Game:
@@ -31,7 +31,6 @@ class Game:
             self.tk.update_idletasks()
             self.tk.update()
             time.sleep(0.01)
-
 
 class Coords:
     def __init__(self, x1=0, y1=0, x2=0, y2=0):
@@ -149,6 +148,7 @@ class StickFigureSprite(Sprite):
 
     def jump(self, evt):
         if self.y == 0:
+            mixer.Sound.play(jump_sound)
             self.y = -4
             self.jump_count = 0
 
@@ -233,12 +233,16 @@ class StickFigureSprite(Sprite):
                 self.x = 0
                 left = False
                 if sprite.endgame:
+                    mixer.music.stop()
+                    mixer.Sound.play(game_over_sound)
                     self.game.running = False
 
             if right and self.x > 0 and collided_right(co, sprite_co):
                 self.x = 0
                 right = False
                 if sprite.endgame:
+                    mixer.music.stop()
+                    mixer.Sound.play(game_over_sound)
                     self.game.running = False
 
         if falling and bottom and self.y == 0 and co.y2 < self.game.canvas_height:
@@ -255,6 +259,13 @@ class DoorSprite(Sprite):
         self.coordinates = Coords(x, y, x + (width / 2), y + height)
         self.endgame = True
 
+
+global jump_sound, game_over_sound
+mixer.init()
+jump_sound = mixer.Sound("Jump.wav")
+game_over_sound = mixer.Sound("Game Over.wav")
+mixer.music.load("bgm.mp3")
+mixer.music.play(-1)
 
 g = Game()
 platform1 = PlatformSprite(g, PhotoImage(file="platform1.png"), 0, 480, 100, 10)
