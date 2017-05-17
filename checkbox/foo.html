@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <tr>
+            <th scope="row"><span class="label" style="margin-left:24px;">인지경로</span></th>
+            <td colspan="3">
+                <div class="form reco-form">
+                    <span class="label-wrap"><label for="reco01">매장방문</label><input type="checkbox" name="FR_HOW" value="1" id="reco01" class="check" /></span>
+                    <span class="label-wrap"><label for="reco02">지인소개</label><input type="checkbox" name="FR_HOW" value="2" id="reco02" class="check" /></span>
+                    <span class="label-wrap"><label for="reco03">홈페이지</label><input type="checkbox" name="FR_HOW" value="3" id="reco03" class="check" /></span>
+                    <span class="label-wrap"><label for="reco04">신문광고</label><input type="checkbox" name="FR_HOW" value="4" id="reco04" class="check" /></span>
+                    <span class="label-wrap"><label for="reco05">기사보도</label><input type="checkbox" name="FR_HOW" value="5" id="reco05" class="check" /></span>
+                    <span class="label-wrap"><label for="reco06">박람회</label><input type="checkbox" name="FR_HOW" value="6" id="reco06" class="check" /></span>
+                    <span class="label-wrap"><label for="reco07">기타</label><input type="checkbox" name="FR_HOW" value="7" id="reco07" class="check" /></span>
+                    <input type="text" title="인지경로 기타" name="FR_HOW" id="ext" class="text" style="width:100px;margin-top:2px;"/>
+                </div>
+            </td>
+        </tr>
+        <script>
+         function foo () {
+             var a = document.getElementsByClassName("check");
+             var cont = [];
+             for(var i in a) {
+                 if (a[i].checked) {
+                     cont.push(a[i].previousSibling.innerText);
+                 }
+             }
+             return cont.join(", ");
+         }
+        </script>
+    </body>
+</html>
